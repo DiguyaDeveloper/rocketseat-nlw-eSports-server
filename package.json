@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:dev": "ts-node-dev src/server.ts",
+    "start:dev": "ts-node-dev --exit-child src/server.ts",
     "start:prisma": "npx prisma studio",
     "migrate:dev": "npx prisma migrate dev",
     "build": "tsc",
