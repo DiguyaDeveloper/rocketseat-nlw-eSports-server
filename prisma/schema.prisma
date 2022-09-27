@@ -11,30 +11,48 @@ datasource db {
 }
 
 model Game {
-  id        String @id @default(uuid())
+  id        String   @id @default(uuid())
   title     String
   bannerUrl String
-  Ad        Ad[]
+  Ads       Ads[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
-model Ad {
-  id              String     @id @default(uuid())
+model Ads {
+  id              String   @id @default(uuid())
   gameId          String
-  weekDays        WeekDays[]
   name            String
   yearPlaying     Int
   discord         String
   hourStart       Int
   hourEnd         Int
   useVoiceChannel Boolean
-  createdAt       DateTime   @default(now())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
 
-  game Game @relation(fields: [gameId], references: [id])
+  game       Game         @relation(fields: [gameId], references: [id])
+  AdWeekDays AdWeekDays[]
 }
 
 model WeekDays {
-  id   String  @id @default(uuid())
-  adId String?
+  id        String   @id @default(uuid())
+  dayNumber Int
+  day       String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-  Ad Ad? @relation(fields: [adId], references: [id])
+  AdWeekDays AdWeekDays[]
+}
+
+model AdWeekDays {
+  adId       String
+  weekDaysId String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  ads      Ads      @relation(fields: [adId], references: [id])
+  weekDays WeekDays @relation(fields: [weekDaysId], references: [id])
+
+  @@id([adId, weekDaysId])
 }
