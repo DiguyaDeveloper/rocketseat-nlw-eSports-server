@@ -1,29 +1,8 @@
-# Back-end
+# Next Level Week - eSports Edition 
 
-# Entities
+## Server Application using Nodejs and express with typescript language
 
-## Games
+### Desafios
 
-id
-title
-bannerUrl
-
-## Ads
-
-id
-gameId
-name
-yearPlaying
-discord
-weekDays
-hourStart
-hourEnd
-useVoiceChannel
-createdAt
-
-## Casos de uso
-
-- Listagem de games com contagem de anúncios
-- Criação de novo anúncio
-- Listagem de anúncios por game
-- Buscar discord pelo ID do anúncio
+- [x] - Divisão de rotas
+- [ ] - Clean code e single responsability
